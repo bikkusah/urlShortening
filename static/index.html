@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL Shortener</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>URL Shortener</h1>
+        <form action="/short" method="post">
+            <input type="url" name="long_url" placeholder="Enter your URL here..." required>
+            <button type="submit">Shorten</button>
+        </form>
+
+        {{if .ShortUrl}}
+        <div id="result">
+            <p>Shortened URL: <a href="{{.ShortUrl}}" target="_blank">{{.ShortUrl}}</a></p>
+        </div>
+        {{end}}
+
+        {{if .Error}}
+        <div id="result">
+            <p style="color: red;">Error: {{.Message}}</p>
+        </div>
+        {{end}}
+    </div>
+</body>
+</html>
